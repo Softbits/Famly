@@ -38,12 +38,12 @@ async function parseFeed() {
         for (const post of feed) {
             if (post.videos.length) {
                 for (const video of post.videos) {
-                    await download(video.videoUrl, 'videos');
+                    await download(video.videoUrl, 'videos/' + moment(post.createdDate).format('YYYY-MM-DD'));
                 }
             }
             if (post.images.length) {
                 for (const image of post.images) {
-                    await download(image.url_big, 'images');
+                    await download(image.url_big, 'images/' + moment(post.createdDate).format('YYYY-MM-DD'));
                 }
             }
             olderThan = post.createdDate;
